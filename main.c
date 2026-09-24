@@ -5,7 +5,7 @@ int main() {
     int choice;
     AddressBook addressBook;
     initialize(&addressBook); // Initialize the address book
-
+    int sortCriteria;
     do {
         printf("\nAddress Book Menu:\n");
         printf("1. Create contact\n");
@@ -32,7 +32,7 @@ int main() {
                 deleteContact(&addressBook);
                 break;
             case 5:          
-                listContacts(&addressBook, sortChoice);
+                listContacts(&addressBook, sortCriteria); //sortChoice);
                 break;
             case 6:
                 printf("Saving...\n");
