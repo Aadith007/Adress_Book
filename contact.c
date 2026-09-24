@@ -95,9 +95,7 @@ int is_valid_name(char name[]){
     if(strlen(name)<2){
         return 0;
     } 
-    if(!isalpha (name[0])){
-        return 0;
-    }
+    
     for(i=0;name[i]!='\0';i++){
         if(!isalnum(name[i]) && name[i]!=' '){
             return 0;
