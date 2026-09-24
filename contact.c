@@ -94,7 +94,7 @@ int is_valid_name(char name[]){
     int i;
     if(strlen(name)<2){
         return 0;
-    }
+    } 
     if(!isalpha (name[0])){
         return 0;
     }
@@ -146,6 +146,10 @@ int is_valid_mail(char mail[]){
         if(mail[i]>='A' && mail[i]<='Z'){
             return 0;
         }
+        if((mail[i]=='.'&&mail[i+1]=='.') || (mail[i]=='@' && mail[i+1]=='.') || (mail[i]=='.'&&mail[i+1]=='@')){
+            return 0;
+        }
+        
         
         
         
@@ -156,12 +160,13 @@ int is_valid_mail(char mail[]){
             }
         }
         
-       
-    }
-    if(count_m!=1){
+    
+    
+   
+}
+     if(count_m!=1){
         return 0;
     }
-    
     if(mail[0]=='@'){
         return 0;
     }
