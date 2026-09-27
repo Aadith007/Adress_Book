@@ -261,19 +261,135 @@ int is_valid_mail(char mail[]){
     
     return 1;
 }
-void searchContact(AddressBook *addressBook) 
-{
-    /* Define the logic for search */
+void searchContact(AddressBook *addressBook){
+    int criteria;
+    printf("Search based on: \n");
+    printf("1.Name\n2.phone\n3.email\n");
+    printf("Enter your choice: \n");
+    scanf("%d",&criteria);
+    switch(criteria){
+        case 1:search_name(addressBook);
+        break;
+        case 2:search_ph(addressBook);
+        break;
+        case 3:search_email(addressBook);
+        break;
+        default:printf("Invalid operation\n");
+        
+    }
+}
+void search_name(AddressBook *addressBook){
+    char key[20];
+    int i;
+    int found=0;
+    printf("Enter name to search: \n");
+    scanf(" %[^\n]",key);
+   
+    for(i=0;i<addressBook->contactCount;i++){
+        if(strcasestr(addressBook->contacts[i].name,key)!=NULL){
+             found=1;
+        }
+    }
+        if(found==0){
+             printf("No search results\n");
+            return;
+        }
+        printf("             CONTACT LIST\n");
+    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("--------------------------------------------------\n");
+    for(i=0;i<addressBook->contactCount;i++){
+         if(strcasestr(addressBook->contacts[i].name,key)!=NULL){
+             printf("%-15s %-12s %-30s \n",addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
+        }
+    }
+    
 }
 
-void editContact(AddressBook *addressBook)
-{
-	/* Define the logic for Editcontact */
+void search_ph(AddressBook *addressBook){
+    char key[20];
+    int i;
+    int found=0;
+    printf("Enter phone number to search: \n");
+    scanf("%s",key);
+     
+    for(i=0;i<addressBook->contactCount;i++){
+        if(strcasestr(addressBook->contacts[i].phone,key)!=NULL){
+         
+            found=1;
+        }
+
+    }
+    if(found==0){
+        printf("No search results\n");
+        return;
+    }
+     printf("             CONTACT LIST\n");
+    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("--------------------------------------------------\n");
+    for(i=0;i<addressBook->contactCount;i++){
+         if(strcasestr(addressBook->contacts[i].phone,key)!=NULL){
+             printf("%-15s %-12s %-30s \n",addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
+        }
+    }
+
+
+}
+void search_email(AddressBook *addressBook){
+    char key[20];
+    int i;
+    int found=0;
+    printf("Enter mail id to search: \n");
+    scanf("%s",key);
     
+    for(i=0;i<addressBook->contactCount;i++){
+        if(strcasestr(addressBook->contacts[i].email,key)!=NULL){
+            found=1;
+        }
+    }
+    if(found==0){
+        printf("No search results\n");
+        return;
+    }
+    printf("             CONTACT LIST\n");
+    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("--------------------------------------------------\n");
+    for(i=0;i<addressBook->contactCount;i++){
+         if(strcasestr(addressBook->contacts[i].email,key)!=NULL){
+             printf("%-15s %-12s %-30s \n",addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
+        }
+    }
+
+}
+
+
+
+
+
+
+void editContact(AddressBook *addressBook)
+{   
+
+	/* Define the logic for Editcontact */
+
 }
 
 void deleteContact(AddressBook *addressBook)
 {
-	/* Define the logic for deletecontact */
-   
+	delete_name(addressBook);
+
+    
+}
+void delete_name(Address *addressBook){
+    char key[20];
+    printf("Enter name to be deleted: ");
+    scanf(" %[^\n]",key);
+    if(strcasestr(adressBook->contacts[i].name,key)!=NULL){
+    for(int i=0;i<adressBook->contactCount;i++){
+        
+            adressBook->contacts[i]=addressBook->contacts[i+1];
+
+    }
+    adressBook->contactCount-1;
+    
+    }
 }
