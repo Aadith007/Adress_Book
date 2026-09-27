@@ -18,9 +18,13 @@ void createContact(AddressBook *addressBook);
 int is_valid_name(char name[]);
 int is_valid_ph(char phone[]);
 int is_valid_mail(char email[]);
+void sort_name(AddressBook *addressBook);
+void sort_email(AddressBook *addressBook);
+void sort_phone(AddressBook *addressBook);
 int is_duplicate_em(AddressBook *addressbook,char email[]);
 int is_duplicate_ph(AddressBook *addressBook,char phone[]);
 void searchContact(AddressBook *addressBook);
+
 void editContact(AddressBook *addressBook);
 void deleteContact(AddressBook *addressBook);
 void listContacts(AddressBook *addressBook, int sortCriteria);
