@@ -16,6 +16,7 @@ int main() {
     	printf("6. Save contacts\n");		
         printf("7. Load contacts\n");
         printf("8.Exit\n");
+        printf("\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         

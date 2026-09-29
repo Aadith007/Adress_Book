@@ -11,7 +11,7 @@ void listContacts(AddressBook *addressBook, int sortCriteria)
 {
     // Sort contacts based on the choosen criteria
     int criteria;
-    printf("Sort based on : \n1.Name\n2.phone\n3.email\n");
+    printf("List based on : \n1.Name\n2.phone\n3.email\n");
     scanf("%d",&criteria);
     switch(criteria){
         case 1:sort_name(addressBook);
@@ -67,7 +67,7 @@ while(1){
             
          }
          else if(is_duplicate_ph(addressBook,addressBook->contacts[addressBook->contactCount].phone)){
-            printf("Number aldresy existing\n");
+            printf("Number Aldredy Exist\n");
          }
          else{
             
@@ -76,13 +76,13 @@ while(1){
        
     }
 while(1){
-    printf("Enter mail id : ");
+    printf("Enter Mail id : ");
     scanf("%s",addressBook->contacts[addressBook->contactCount].email);
     if(!(is_valid_mail(addressBook->contacts[addressBook->contactCount].email))){
-        printf("Invalid\n");
+        printf("Invalid Mail ID\n");
     }
     else if(is_duplicate_em(addressBook,addressBook->contacts[addressBook->contactCount].email)){
-        printf("Mail adredy existing\n");
+        printf("Mail Aldredy Exist\n");
     }
     else{
         
@@ -104,7 +104,7 @@ void sort_name(AddressBook *addressBook){
     int j;
     for(i=0;i<addressBook->contactCount-1;i++){ 
         for(j=0;j<addressBook->contactCount-i-1;j++){
-            if(strcmp(addressBook->contacts[j].name,addressBook->contacts[j+1].name)>0){
+            if(strcasecmp(addressBook->contacts[j].name,addressBook->contacts[j+1].name)>0){
             Contact temp;
             temp = addressBook->contacts[j];
             addressBook->contacts[j] = addressBook->contacts[j+1];
@@ -114,11 +114,11 @@ void sort_name(AddressBook *addressBook){
     }
 }
      printf("             CONTACT LIST\n");
-    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
-    printf("--------------------------------------------------\n");
+    printf("%-25s %-20s %-35s\n","NAME" , "PHONE", "MAIL ID");
+    printf("------------------------------------------------------------\n");
     int c=1;
      for(i=0;i<addressBook->contactCount;i++){
-        printf(" %d. %-15s %-12s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
+        printf(" %d. %-20s %-15s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
     }
 }
 
@@ -136,11 +136,11 @@ void sort_email(AddressBook *addressBook){
         }
     }
    printf("             CONTACT LIST\n");
-    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("%-25s %-20s %-35s\n","NAME" , "PHONE", "MAIL ID");
    printf("--------------------------------------------------\n");
     int c=1;
      for(i=0;i<addressBook->contactCount;i++){
-        printf("%d.%-15s %-12s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
+        printf("%d.%-20s %-15s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
     }
 
 }
@@ -159,11 +159,11 @@ void sort_phone(AddressBook *addressBook){
         }
     }
     printf("             CONTACT LIST\n");
-    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("%-25s %-20s %-35s\n","NAME" , "PHONE", "MAIL ID");
     printf("--------------------------------------------------\n");
     int c=1;
      for(i=0;i<addressBook->contactCount;i++){
-        printf("%d.%-15s %-12s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
+        printf("%d.%-20s %-15s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
     }
 
 }
@@ -303,13 +303,13 @@ int search_name(AddressBook *addressBook){
              return -1;
         }
         printf("             CONTACT LIST\n");
-    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("%-25s %-20s %-35s\n","NAME" , "PHONE", "MAIL ID");
     printf("--------------------------------------------------\n");
     int c=1;
     for(i=0;i<matching_count;i++){
         int index=matching_contact[i];
         
-             printf("%d.%-15s %-12s %-30s \n",c++,addressBook->contacts[index].name,addressBook->contacts[index].phone,addressBook->contacts[index].email);
+             printf("%d.%-20s %-15s %-30s \n",c++,addressBook->contacts[index].name,addressBook->contacts[index].phone,addressBook->contacts[index].email);
         }
         int selec;
         printf("Select a contact: ");
@@ -343,12 +343,12 @@ int search_ph(AddressBook *addressBook){
         }
     
      printf("             CONTACT LIST\n");
-    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("%-25s %-20s %-35s\n","NAME" , "PHONE", "MAIL ID");
     printf("--------------------------------------------------\n");
     int c=1;
     for(i=0;i<matching_count;i++){
             int index=matching_contact[i];
-             printf("%d.%-15s %-12s %-30s \n",c++,addressBook->contacts[index].name,addressBook->contacts[index].phone,addressBook->contacts[index].email);
+             printf("%d.%-20s %-15s %-30s \n",c++,addressBook->contacts[index].name,addressBook->contacts[index].phone,addressBook->contacts[index].email);
         }
          int selec;
         printf("Select a contact: ");
@@ -382,12 +382,12 @@ int search_email(AddressBook *addressBook){
         }
    
     printf("             CONTACT LIST\n");
-    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("%-25s %-20s %-35s\n","NAME" , "PHONE", "MAIL ID");
     printf("--------------------------------------------------\n");
     int c=1;
     for(i=0;i<matching_count;i++){
             int index=matching_contact[i];
-             printf("%d.%-15s %-12s %-30s \n",c++,addressBook->contacts[index].name,addressBook->contacts[index].phone,addressBook->contacts[index].email);
+             printf("%d.%-20s %-15s %-30s \n",c++,addressBook->contacts[index].name,addressBook->contacts[index].phone,addressBook->contacts[index].email);
         }
          int selec;
         printf("Select a contact: ");
@@ -410,48 +410,47 @@ void editContact(AddressBook *addressBook)
 {   
 
 	int criteria;
+    int index;
+    int edit;
     printf("Search based on: \n");
     printf("1.Name\n2.phone\n3.email\n");
     printf("Enter your choice: \n");
     scanf("%d",&criteria);
     switch(criteria){
-        case 1:search_name(addressBook);
+        case 1:index=search_name(addressBook);
         break;
-        case 2:search_ph(addressBook);
+        case 2:index=search_ph(addressBook);
         break;
-        case 3:search_email(addressBook);
+        case 3:index=search_email(addressBook);
         break;
         default:printf("Invalid operation\n");
+        return;
         
     }
+    if(index==-1){
+        return;
+    }
 
-    int edit;
+    
     printf("Edit based on\n");
     printf("1.Name\n2.Phone\n3.Email\n");
     printf("Enter your choice\n: ");
     scanf("%d",&edit);
     switch(edit){
-        case 1:edit_name(addressBook);
+        case 1:edit_name(addressBook,index);
         break;
-        case 2:edit_ph(addressBook);
+        case 2:edit_ph(addressBook,index);
         break;
-        case 3:edit_email(addressBook);
+        case 3:edit_email(addressBook,index);
         break;
         default:printf("Invalid operation\n");
 
     }
 }
 
-void edit_name(AddressBook *addressBook){
-    char key[20];
+void edit_name(AddressBook *addressBook,int index){
+    
     char new_name[20];
-    int index;
-   
-    index=search_name(addressBook);
-    if(index==-1){
-        return ;
-    }
-
 
 printf("Enter new name: \n");
 scanf(" %[^\n]", new_name);
@@ -470,19 +469,14 @@ else
 }
 
 
-void edit_ph(AddressBook *addressBook){
-    char key[20];
+void edit_ph(AddressBook *addressBook,int index){
+
     char new_ph[20];
-    int index;
    
-    index=search_ph(addressBook);
-    if(index==-1){
-        return ;
-    }
 
 
-printf("Enter new phone : \n");
-scanf(" %[^\n]", new_ph);
+printf("Enter new phone number : \n");
+scanf("%s", new_ph);
 
 if(is_valid_ph(new_ph))
 {   
@@ -492,31 +486,26 @@ if(is_valid_ph(new_ph))
     return;
 }
 else{
-    printf("Duplicate number exist\n");
+    printf("Number Aldredy Exist\n");
     return ;
 }
 }
 else
 {
-    printf("Invalid Phone\n");
+    printf("Invalid Phone Number\n");
     return;
 }
 }
 
 
-void edit_email(AddressBook *addressBook){
-    char key[20];
+void edit_email(AddressBook *addressBook,int index){
     char new_mail[20];
-    int index;
    
-    index=search_email(addressBook);
-    if(index==-1){
-        return ;
-    }
+  
 
 
-printf("Enter new mail : \n");
-scanf(" %[^\n]", new_mail);
+printf("Enter new mail id : \n");
+scanf("%s", new_mail);
 
 if(is_valid_mail(new_mail))
 {   
@@ -526,13 +515,13 @@ if(is_valid_mail(new_mail))
     return;
 }
 else{
-    printf("Duplicate mail id exist\n");
+    printf("Mail ID Aldresy Exist\n");
     return ;
 }
 }
 else
 {
-    printf("Invalid mail id\n");
+    printf("Invalid Mail ID\n");
     return;
 }
 }
@@ -568,14 +557,13 @@ void delete_name(AddressBook *addressBook){
     }
     addressBook->contactCount--;
     printf("Contact deleted\n");
-      printf("contact deleted\n");
     printf("             CONTACT LIST\n");
-    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("%-25s %-20s %-35s\n","NAME" , "PHONE", "MAIL ID");
     printf("--------------------------------------------------\n");
     int c=1;
     for(int i=0;i<addressBook->contactCount;i++){
         
-         printf(" %d. %-15s %-12s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
+         printf(" %d. %-20s %-15s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
          
         }
 
@@ -593,14 +581,13 @@ void delete_ph(AddressBook *addressBook){
     }
     addressBook->contactCount--;
     printf("Contact deleted\n");
-      printf("contact deleted\n");
     printf("             CONTACT LIST\n");
-    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("%-25s %-20s %-35s\n","NAME" , "PHONE", "MAIL ID");
     printf("--------------------------------------------------\n");
     int c=1;
     for(int i=0;i<addressBook->contactCount;i++){
         
-         printf(" %d. %-15s %-12s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
+         printf(" %d. %-20s %-15s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
          
         }
 
@@ -618,14 +605,13 @@ void delete_email(AddressBook *addressBook){
     }
     addressBook->contactCount--;
     printf("Contact deleted\n");
-      printf("contact deleted\n");
     printf("             CONTACT LIST\n");
-    printf("%-15s %-12s %-30s\n","NAME" , "PHONE", "MAIL ID");
+    printf("%-25s %-20s %-35s\n","NAME" , "PHONE", "MAIL ID");
     printf("--------------------------------------------------\n");
     int c=1;
     for(int i=0;i<addressBook->contactCount;i++){
         
-         printf(" %d. %-15s %-12s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
+         printf(" %d. %-20s %-15s %-30s \n",c++,addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
          
         }
 

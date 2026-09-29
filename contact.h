@@ -33,9 +33,9 @@ int is_duplicate_ph(AddressBook *addressBook,char phone[]);
 void searchContact(AddressBook *addressBook);
 
 void editContact(AddressBook *addressBook);
-void edit_ph(AddressBook *addressBook);
-void edit_name(AddressBook *addressBook);
-void edit_email(AddressBook *addressBook);
+void edit_ph(AddressBook *addressBook,int index);
+void edit_name(AddressBook *addressBook,int index);
+void edit_email(AddressBook *addressBook,int index);
 void deleteContact(AddressBook *addressBook);
 void listContacts(AddressBook *addressBook, int sortCriteria);
 void initialize(AddressBook *addressBook);
