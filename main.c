@@ -14,7 +14,8 @@ int main() {
         printf("4. Delete contact\n");
         printf("5. List all contacts\n");
     	printf("6. Save contacts\n");		
-        printf("7. Exit\n");
+        printf("7. Load contacts\n");
+        printf("8.Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         
@@ -36,15 +37,23 @@ int main() {
                 break;
             case 6:
                 printf("Saving...\n");
-                //saveContactsToFile(&addressBook);
-                break;   
+                saveContactsToFile(&addressBook);
+                break;  
+            
             case 7:
+                printf("Loading...\n");
+                loadContactsFromFile(&addressBook);
+                break;
+             
+
+            case 8:
                 printf("Exiting...\n");
                 break;
+
             default:
                 printf("Invalid choice. Please try again.\n");
         }
-    } while (choice != 7);
+    } while (choice != 8);
     
        return 0;
 }
